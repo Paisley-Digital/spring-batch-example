@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+#    org.springframework.security: DEBUG
+#    org.springframework.jdbc.core.JdbcTemplate: DEBUG
+#    org.springframework.jdbc.core.StatementCreatorUtils: DEBUG
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.type.descriptor.sql.BasicBinder: DEBUG
+spring:
+  batch:
+    job:
+      enabled: true
+  application:
+    name: sbs
+    version: 1.0.0
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:h2:file:./data/sbs;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      settings:
+        web-allow-others: true
+  jpa:
+    database: h2
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
+  sleuth:
+    enabled: false
+  zipkin:
+    enabled: false
+
+springdoc:
+  api-docs:
+    enabled: true
+  version: v0.0.4
+
+sbs-config:
+  message:  a message that can be changed live
+  clientUrl: http://localhost:8089/
